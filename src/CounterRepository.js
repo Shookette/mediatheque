@@ -1,9 +1,12 @@
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
+const getDocRef = (id = 'counter') => {
+    const db = getFirestore();
+    return doc(db, 'counters', id)
+}
 
 const getCounter = async () => {
-    const db = getFirestore();
-    const docRef = doc(db, 'counters', 'counter');
-    const result = await getDoc(docRef);
+    const result = await getDoc(getDocRef());
 
     if (result.exists()) {
         return result.data().value;
@@ -12,8 +15,16 @@ const getCounter = async () => {
   }
 };
 
+const increaseCounter = async () => {
+    const updatedCounter = await getCounter() + 1;
+    setDoc(getDocRef, { value : updatedCounter});
+
+    return updatedCounter;
+}
+
 export {
-    getCounter
+    getCounter,
+    increaseCounter
 }
 
 
