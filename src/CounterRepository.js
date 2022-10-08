@@ -6,10 +6,10 @@ const getCounter = async () => {
     const result = await getDoc(docRef);
 
     if (result.exists()) {
-        return result.data();
+        return result.data().value;
     } else {
         return 0;
-    }
+  }
 };
 
 export {
