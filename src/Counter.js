@@ -1,10 +1,9 @@
 import { getCounter } from './CounterRepository';
-import { useAsync } from 'react-use';
+import { useState } from 'react';
 
 const Counter = () => {
-    const counter = useAsync(async () => {
-        return await getCounter();
-    }, []).value;
+    const [counter, setCounter] = useState(0);
+    getCounter().then(value => setCounter(value));
 
     return (
         <div>
