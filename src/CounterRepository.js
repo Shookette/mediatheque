@@ -17,7 +17,7 @@ const getCounter = async () => {
 
 const increaseCounter = async () => {
     const updatedCounter = await getCounter() + 1;
-    setDoc(getDocRef, { value : updatedCounter});
+    setDoc(getDocRef(), { value : updatedCounter});
 
     return updatedCounter;
 }
