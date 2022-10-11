@@ -1,4 +1,6 @@
+import React from 'react';
 import WithFirestore from './WithFirestore';
+
 import Counter from './Counter';
 import './App.css';
 

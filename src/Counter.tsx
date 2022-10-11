@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { getCounter, increaseCounter } from './CounterRepository';
 import { useState } from 'react';
 

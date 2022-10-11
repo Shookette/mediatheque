@@ -1,6 +1,7 @@
+import React from 'react';
 import initFirebase from "./FirebaseLoader";
 
-function WithFirestore(props) {
+const WithFirestore = (props: any) => {
     initFirebase();
 
     return (
