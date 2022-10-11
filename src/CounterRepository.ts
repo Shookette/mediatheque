@@ -5,7 +5,7 @@ const getDocRef = (id = 'counter') => {
     return doc(db, 'counters', id)
 }
 
-const getCounter = async () => {
+const getCounter = async (): Promise<number> => {
     const result = await getDoc(getDocRef());
 
     if (result.exists()) {
@@ -15,8 +15,8 @@ const getCounter = async () => {
   }
 };
 
-const increaseCounter = async () => {
-    const updatedCounter = await getCounter() + 1;
+const increaseCounter = async (): Promise<number> => {
+    const updatedCounter: number = await getCounter() + 1;
     setDoc(getDocRef(), { value : updatedCounter});
 
     return updatedCounter;

@@ -1,11 +1,13 @@
-import React from 'react';
 import initFirebase from "./FirebaseLoader";
+import { ReactNode, FC } from 'react'
 
-const WithFirestore = (props: any) => {
+type Props = { children: ReactNode }
+
+const WithFirestore: FC<Props> = ({ children }) => {
     initFirebase();
 
     return (
-     <>{props.children}</>
+     <>{children}</>
     );
 }
 

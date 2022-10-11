@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { getCounter, increaseCounter } from './CounterRepository';
 import { useState } from 'react';
 
-const Counter = () => {
-    const [counter, setCounter] = useState(0);
+const Counter: FC = () => {
+    const [counter, setCounter] = useState<number>(0);
 
     const increaseCounterState = async ()  => {
         setCounter(await increaseCounter());
     }
 
-    getCounter().then(value => setCounter(value));
+    getCounter().then((value: number) => setCounter(value));
 
     return (
         <div>
