@@ -1,17 +1,18 @@
-import React from 'react';
-import WithFirestore from './WithFirestore';
+import React, { FC } from 'react'
+import WithFirestore from './WithFirestore'
 
-import Counter from './Counter';
-import './App.css';
+import Counter from './Counter'
+import './App.css'
+import Layout from './Layout'
 
-function App() {
+const App: FC = () => {
   return (
-      <WithFirestore>
-        <div className="App">
-          <Counter></Counter>
-        </div>
-      </WithFirestore>
-  );
+    <WithFirestore>
+      <Layout>
+        <Counter></Counter>
+      </Layout>
+    </WithFirestore>
+  )
 }
 
-export default App;
+export default App

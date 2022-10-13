@@ -1,23 +1,22 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react'
 
-import { getCounter, increaseCounter } from './CounterRepository';
-import { useState } from 'react';
+import { getCounter, increaseCounter } from './hooks/CounterRepository'
 
 const Counter: FC = () => {
-    const [counter, setCounter] = useState<number>(0);
+  const [counter, setCounter] = useState<number>(0)
 
-    const increaseCounterState = async ()  => {
-        setCounter(await increaseCounter());
-    }
+  const increaseCounterState: () => Promise<void> = async () => {
+    setCounter(await increaseCounter())
+  }
 
-    getCounter().then((value: number) => setCounter(value));
+  getCounter().then((value: number) => setCounter(value)).catch((error) => console.log(error))
 
-    return (
-        <div>
-            <span>Counter : {counter}</span>
-            <button onClick={increaseCounterState} > + </button>
-        </div>
-    );
+  return (
+    <div>
+      <span>Counter : {counter}</span>
+      <button onClick={() => { void increaseCounterState() }} > + </button>
+    </div>
+  )
 }
 
-export default Counter;
+export default Counter
