@@ -1,0 +1,17 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  font-weight: $font-light;
+  font-size: 16px;
+  color: var(--color-text-button);
+  transition: background .2s;
+}

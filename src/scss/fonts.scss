@@ -1,0 +1,25 @@
+@import './variables';
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: $font-light;
+  font-display: swap;
+  src: url(../fonts/sf-pro-text_light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: $font-regular;
+  font-display: swap;
+  src: url(../fonts/sf-pro-text_regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: $font-bold;
+  font-display: swap;
+  src: url(../fonts/sf-pro-text_semibold.woff2) format('woff2');
+}

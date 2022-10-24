@@ -1,0 +1,82 @@
+@import 'variables';
+
+// Media query mixins
+@mixin mq ($media-string: false) {
+  @if $media-string != false {
+    @media only screen and #{$media-string} {
+      @content;
+    }
+  }
+}
+
+@mixin screen-size ($size, $opts: min, $list: $breakpoints) {
+  $media-string: false;
+  $min: 0;
+
+  @each $breakpoint in $list {
+    @if $size == nth($breakpoint, 1) {
+      @if $opts == only {
+        $media-string: '(min-width: #{$min}px) and (max-width: #{nth($breakpoint, 2) - 1}px)';
+      }
+      @else if $opts == min {
+        $media-string: '(min-width: #{nth($breakpoint, 2)}px)';
+      }
+      @else {
+        $media-string: '(max-width: #{nth($breakpoint, 2) - 1}px)';
+      }
+    }
+    @else {
+      $min: nth($breakpoint, 2);
+    }
+  }
+
+  @include mq ($media-string) {
+    @content;
+  }
+}
+
+@mixin blurred-background ($background: --color-bg, $opacity: 0.9, $position: relative, $blur: 5px) {
+  position: $position;
+  backdrop-filter: blur($blur);
+
+  * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var($background);
+    opacity: $opacity;
+  }
+}
+
+/**
+ * Make label visually hidden but present to accessibility
+ *
+ * see. https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
+ */
+@mixin visually-hidden () {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@function safe-area ($position, $padding: 0) {
+  @if $padding > 0 {
+    @return calc(#{$padding} + env(safe-area-inset-#{$position}));
+  }
+
+  @return env(safe-area-inset-#{$position});
+}

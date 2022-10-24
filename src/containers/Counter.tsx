@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
+import { Button } from '../components/atoms/Button/Button'
 
-import { getCounter, increaseCounter } from './hooks/CounterRepository'
+import { getCounter, increaseCounter } from '../hooks/CounterRepository'
 
 const Counter: FC = () => {
   const [counter, setCounter] = useState<number>(0)
@@ -14,7 +15,7 @@ const Counter: FC = () => {
   return (
     <div>
       <span>Counter : {counter}</span>
-      <button onClick={() => { void increaseCounterState() }} > + </button>
+      <Button onClick={() => { void increaseCounterState() }} > + </Button>
     </div>
   )
 }
