@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react'
 import { Media } from '../types/mediaType'
-import { getMediaByID } from '../services/mediaRepository'
+import { getMedias } from '../services/mediaRepository'
 
-interface UseMedia {
+interface UseMedias {
   isLoading: boolean
-  media: Media | null
+  medias: Media[]
 }
 
-export const useMedia = (id: string): UseMedia => {
+export const useMedias = (): UseMedias => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [media, setMedia] = useState<Media | null>(null)
+  const [medias, setMedias] = useState<Media[]>([])
 
   useEffect(() => {
     setIsLoading(true)
-    getMediaByID(id).then((media: Media | null) => {
-      setMedia(media)
+    getMedias().then((medias: Media[]) => {
+      setMedias(medias)
       setIsLoading(false)
     }).catch((error) => {
       console.error(error)
       setIsLoading(false)
     })
-  }, [id])
+  }, [])
 
-  return { isLoading, media }
+  return { isLoading, medias }
 }

@@ -1,4 +1,4 @@
-import initFirebase from './utils/firebaseLoader'
+import initFirebase from '../utils/firebaseLoader'
 import React, { ReactNode, FC } from 'react'
 
 interface Props { children: ReactNode }

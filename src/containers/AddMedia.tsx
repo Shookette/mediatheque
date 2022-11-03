@@ -1,24 +1,30 @@
-import React, { ChangeEvent, FC, useState } from 'react'
-import { setMedia } from '../hooks/mediaRepository'
+import React, { FC } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { setMedia } from '../services/mediaRepository'
 import { Media } from '../types/mediaType'
 
-const AddMedia: FC = () => {
-  const [mediaName, setMediaName] = useState<string>('')
+interface Inputs {
+  mediaName: string
+}
 
-  const addMedia: (form: SubmitEvent) => Promise<void> = async (form: SubmitEvent) => {
+const AddMedia: FC = () => {
+  const { register, handleSubmit } = useForm<Inputs>()
+
+  const onSubmit: SubmitHandler<Inputs> = async data => {
     const media: Media = {
-      id: mediaName,
-      titre: mediaName
+      id: data.mediaName,
+      titre: data.mediaName
     }
+
+    console.log('setMedia::media::', media)
 
     await setMedia(media)
   }
 
   return (
-    <form onSubmit={() => addMedia}>
-      <label>media name:</label>
-      <input type="string" value={mediaName} onChange={(changeEvent: ChangeEvent<HTMLInputElement>) => setMediaName(changeEvent.target.value)} />
-      <input type="submit" value="submit" />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register('mediaName')} />
+      <input type="submit" />
     </form>
   )
 }

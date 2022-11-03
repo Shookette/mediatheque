@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import App from './App'
+import Counter from '../containers/Counter'
 
 test('renders counter text', () => {
-  render(<App />)
+  render(<Counter />)
   const linkElement = screen.getByText(/counter/i)
   expect(linkElement).toBeInTheDocument()
 })

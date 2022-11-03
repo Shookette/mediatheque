@@ -1,21 +1,18 @@
 import React, { FC } from 'react'
-import WithFirestore from './WithFirestore'
-
-import Counter from './containers/Counter'
 import './App.scss'
-import Layout from './Layout'
-import AddMedia from './containers/AddMedia'
+import Layout from './layout/Layout'
+import { Route, Routes } from 'react-router-dom'
+import Medias from './containers/Medias'
+import Media from './containers/Media'
 
 const App: FC = () => {
   return (
-    <WithFirestore>
-      <Layout>
-        <div>
-          <Counter />
-          <AddMedia />
-        </div>
-      </Layout>
-    </WithFirestore>
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<Medias />}/>
+        <Route path='media/:id' element={<Media />}/>
+      </Route>
+    </Routes>
   )
 }
 
