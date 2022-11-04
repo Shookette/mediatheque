@@ -2,44 +2,32 @@
 @import './scss/mixins';
 
 .layout {
-  display: block;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   padding: safe-area(top, 60px) 0 safe-area(bottom, 60px);
 
   .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-  }
-
-  .nav-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+    order: 2;
+    flex: 1 1 auto;
   }
 
   @include screen-size(s) {
-    padding: 60px 0 0 200px;
+    flex-direction: row;
 
-    .nav-bar {
-      top: 80px;
-      bottom: auto;
-      right: auto;
+    .top-bar {
+      order: 1
     }
   }
 }
 
 .layout_wrapper {
-  position: relative;
+  order: 1;
+  flex: 2 1 auto;
   padding: 20px 0;
 
   @include screen-size(s) {
-    max-width: 840px;
-    padding: 20px;
-    margin: auto;
+    order: 2;
   }
 }
 

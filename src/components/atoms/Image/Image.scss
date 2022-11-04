@@ -1,10 +1,13 @@
+@import '../../../scss/variables';
+
 .image {
   display: block;
   position: relative;
   height: auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   overflow: hidden;
   width: 75px;
-  border-radius: 5px;
 
   &--normal {
     width: 100px;
