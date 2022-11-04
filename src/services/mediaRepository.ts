@@ -32,7 +32,7 @@ const getMediaByID = async (id: string): Promise<Media | null> => {
 }
 
 const setMedia = async (media: Media): Promise<void> => {
-  await setDoc(doc(getCollectionRef('medias'), media.id as string), media)
+  await setDoc(doc(getCollectionRef('medias'), media.id), media)
 }
 
 export {

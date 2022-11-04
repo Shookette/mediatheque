@@ -3,9 +3,9 @@ import Image from '../../atoms/Image/Image'
 import './MediaCard.scss'
 
 interface MediaCardProps {
-  titre: string
-  sousTitre: string
-  src: string
+  titre?: string
+  sousTitre?: string
+  src?: string
 }
 
 const MediaCard: FC<MediaCardProps> = ({ titre, sousTitre, src }) => {
