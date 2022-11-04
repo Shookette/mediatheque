@@ -1,4 +1,4 @@
 export interface Media {
-  id: String
-  titre: String
+  id: string
+  titre: string
 }

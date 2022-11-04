@@ -1,0 +1,14 @@
+.medias {
+
+}
+
+.medias_content {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 20px;
+
+  & > .mediaCard {
+    margin: 10px;
+  }
+}
